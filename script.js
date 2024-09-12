@@ -36,12 +36,26 @@ addBookButton.addEventListener("click", () => {
     console.log(library);
 });
 
+//event delegation to check for any child of card-container with the class .delete-button
+cardContainer.addEventListener("click", (e) => {
+    let target = e.target;
+    if (target.classList.contains("delete-button")) {
+        const deleteTarget = target.parentNode;
+        library.forEach(item => {
+            console.log(item.index, parseInt(deleteTarget.getAttribute("id")));
+            if(item.index === parseInt(deleteTarget.getAttribute("id"))) {
+                
+            }
+        })
+        // deleteTarget.parentNode.removeChild(deleteTarget);
+    };
+    //after deleting the appropriate index from library array, loop back over the array for i = 0; i < library.length; i++ => index = i;
+})
+
 function createCard() {
-    //create the main div for the card and append it to the card container div
     const cardDiv = document.createElement("div");
     cardDiv.classList.add("card");
     cardContainer.appendChild(cardDiv);
-    //add content to the card
 
     //set i to be equal to the library length - 1 (arrays are 0 indexed so i will always be equal to the most recently added index of the library array)
     for (let i = library.length - 1; i === library.length - 1; i++) {
