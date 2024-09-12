@@ -3,3 +3,22 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+.card {
+    height: max(300px, 25vh);
+    width: max(200px, 25%); 
+    padding: 20px;
+    border: 2px solid black;
+
+}
+
+.card-row {
+    border: 1px solid black;
+    width: 100%;
+}
+
+.test {
+    width: 500px;
+    height: 500px;
+    background-color: red;
+}
