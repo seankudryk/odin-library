@@ -6,7 +6,7 @@ const readStatusInput = document.querySelector("#read-status-input");
 const cardContainer = document.querySelector(".card-container");
 
 const library = [];
-readStatusInput.value = "";
+readStatusInput.value = null;
 
 function Book(author, title, pageCount, readStatus, index) {
     this.author = author;
@@ -14,6 +14,15 @@ function Book(author, title, pageCount, readStatus, index) {
     this.pageCount = pageCount;
     this.readStatus = readStatus;
     this.index = index;
+    this.toggleRead = function() {
+        if(readStatus === "Read") {
+            console.log("The read status of this book entry is Read");
+        } else if (readStatus === "Not Read") {
+            console.log("The read status of this book entry is NOT Read");
+        } else {
+            console.log("The read status is not set");
+        }
+    };
 }
 
 function addBookToLibrary() {
@@ -36,21 +45,35 @@ addBookButton.addEventListener("click", () => {
     console.log(library);
 });
 
-//event delegation to check for any child of card-container with the class .delete-button
+let removedIndex;
+
+//event delegation to check for click events with conditional branching dependent on the class of the button element (in this case, .delete-button or .toggle-read)
 cardContainer.addEventListener("click", (e) => {
     let target = e.target;
+
+    //functionality for delete button
     if (target.classList.contains("delete-button")) {
-        const deleteTarget = target.parentNode;
-        library.forEach(item => {
-            console.log(item.index, parseInt(deleteTarget.getAttribute("id")));
-            if(item.index === parseInt(deleteTarget.getAttribute("id"))) {
-                
-            }
-        })
-        // deleteTarget.parentNode.removeChild(deleteTarget);
-    };
-    //after deleting the appropriate index from library array, loop back over the array for i = 0; i < library.length; i++ => index = i;
-})
+        const eventTarget = target.parentNode;
+        for (let i = 0; i < library.length; i++) {
+            if(library[i].index === parseInt(eventTarget.getAttribute("id"))) {
+                removedIndex = library.splice(library[i].index, 1);
+            };
+        };
+        //remove the parent node of the div the delete button was clicked within 
+        eventTarget.parentNode.removeChild(eventTarget);
+        
+        //after deleting the appropriate index from library array, loop back over the array for i = 0; i < library.length; i++ => index = i;
+        for (let i = 0; i < library.length; i++) {
+            library[i].index = i;
+        }
+    };    
+
+    //functionality for toggle buttons
+    if(target.classList.contains("toggle-read-button")) {
+        let readStatusOutput = target.previousSibling.previousSibling.previousSibling.previousSibling.lastChild.previousSibling.value;
+        readStatusOutput
+    }
+});
 
 function createCard() {
     const cardDiv = document.createElement("div");
@@ -78,6 +101,6 @@ function createCard() {
                     <div class="read-status-output">${library[i].readStatus}</div>
                 </div>
                 <button class="delete-button">Delete Entry</button>
-                <button class="toggle-read">Toggle Read</button>`
+                <button class="toggle-read-button">Toggle Read</button>`
     }
 }
