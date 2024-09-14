@@ -5,6 +5,7 @@ const pageCountInput = document.querySelector("#page-count-input")
 const readStatusInput = document.querySelector("#read-status-input");
 const cardContainer = document.querySelector(".card-container");
 const newEntryButton = document.querySelector(".new-entry-button");
+const cancelEntryButton = document.querySelector(".cancel-entry-button");
 const dialog = document.querySelector("dialog");
 const library = [];
 readStatusInput.value = null;
@@ -49,7 +50,11 @@ addBookButton.addEventListener("click", (event) => {
 });
 
 newEntryButton.addEventListener("click", () => {
-    dialog.showModal();
+    dialog.show();
+});
+
+cancelEntryButton.addEventListener("click", () => {
+    dialog.close
 });
 
 //event delegation to check for click events with conditional branching dependent on the class of the button element (in this case, .delete-button or .toggle-read)

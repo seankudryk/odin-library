@@ -2,6 +2,33 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+svg {
+    height: 55px;
+    width: 55px;
+}
+
+.header {
+    padding: 20px;
+    box-shadow: 1px 5px 10px rgb(183, 183, 183);
+}
+
+h1 {
+    font-family: sans-serif;
+    font-size: 50px;
+}
+
+.title-container {
+    display: flex; 
+    flex-direction: row;
+    align-items: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
 }
 
 .card {
@@ -14,5 +41,27 @@
 
 .card-row {
     border: 1px solid black;
-    width: 100%;
+}
+
+.new-entry-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 225px;
+    height: 50px;
+    border: 1px solid rgb(69, 69, 69);
+    border-radius: 30px;
+    margin-top: 10px;
+    font-size: 20px;
+}
+
+
+
+dialog {
+    border: none;
+}
+
+.card-container {
+    display: grid;
+    grid-template-columns: minmax(auto-fit, );
 }
