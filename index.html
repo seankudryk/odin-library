@@ -9,19 +9,30 @@
 </head>
 <body>
     <div class="title-container">
-        <h1>My Library</h1>
+        <!-- <h1>My Library</h1> -->
+    </div>
+    <div class="new-entry-container">
+        <button class="new-entry-button">New Entry</button>
     </div>
     <div class="user-input-container">
         <div id="input-container">
-        <input type="text" id="name-input"></input>
-        <input type="text" id="title-input"></input>
-        <input type="number" id="page-count-input"></input>
-        <select id="read-status-input">
-            <option value="read">Read</option>
-            <option value="not-read">Not Read</option>
-        </select>
+            <dialog id="toggle-dialog">
+                <form type="dialog"> 
+                    <label for="name-input">Author: </label>
+                    <input type="text" id="name-input" name="name-input" required></input>
+                    <label for="title-input">Title: </label>
+                    <input type="text" id="title-input" name="title-input" required></input>
+                    <label for="page-count-input">Page Count: </label>
+                    <input type="number" id="page-count-input" name="page-count-input" required></input>
+                    <label for="read-status-input"> Read? </label>
+                    <select id="read-status-input" name="read-status-input">
+                        <option value="read">Read</option>
+                        <option value="not-read">Not Read</option>
+                    </select>
+                    <button type="submit" id="add-book-button">Add Book to Library</button>
+                </form>
+            </dialog>
         </div>
-        <button id="add-book-button">Add Book to Library</button>
     </div>
     <div class="card-container">
     </div>

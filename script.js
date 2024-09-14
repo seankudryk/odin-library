@@ -4,6 +4,8 @@ const titleInput = document.querySelector("#title-input");
 const pageCountInput = document.querySelector("#page-count-input")
 const readStatusInput = document.querySelector("#read-status-input");
 const cardContainer = document.querySelector(".card-container");
+const newEntryButton = document.querySelector(".new-entry-button");
+const dialog = document.querySelector("dialog");
 const library = [];
 readStatusInput.value = null;
 
@@ -38,30 +40,31 @@ function resetValues() {
     readStatusInput.value = null;
 }
 
-addBookButton.addEventListener("click", () => {
+addBookButton.addEventListener("click", (event) => {
+    event.preventDefault();
     addBookToLibrary();
     resetValues();
     createCard();
+    dialog.close();
+});
+
+newEntryButton.addEventListener("click", () => {
+    dialog.showModal();
 });
 
 //event delegation to check for click events with conditional branching dependent on the class of the button element (in this case, .delete-button or .toggle-read)
 cardContainer.addEventListener("click", (e) => {
     const target = e.target;
     const eventTarget = target.parentNode;
-    console.log(library);
-
     for (let i = 0; i < library.length; i++) {
-        console.log(library[i].index, parseInt(eventTarget.getAttribute("id")));
         if (library[i].index === parseInt(eventTarget.getAttribute("id"))) {
             //functionality if event target has class .delete-button
             if (target.classList.contains("delete-button")) {
                 eventTarget.parentNode.removeChild(eventTarget);
                 library.splice(library[i].index, 1);
-                console.log(library);
                 //reassign index values in library array and div ids once a div is deleted
                 library.forEach((item, j) => {
                     let cardId = document.querySelectorAll(".card");
-                    console.log(cardId);
                     item.index = j;
                     cardId[j].id = `${j}`;
                 });
@@ -71,7 +74,6 @@ cardContainer.addEventListener("click", (e) => {
                 library[i].toggleRead();
                 let targetTextOutput = document.querySelectorAll(".read-status-output")[i];
                 targetTextOutput.textContent = library[i].readStatus;
-                console.log(target);
             }
         };
     };
