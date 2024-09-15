@@ -32,8 +32,8 @@ form {
 }
 
 .card {
-    height: max(300px, 25vh);
-    width: max(200px, 25%); 
+    height: 100%;;
+    width: 100%;
     padding: 20px;
     border: 2px solid black;
 
@@ -55,13 +55,30 @@ form {
     font-size: 20px;
 }
 
-
-
 dialog {
-    border: none;
+    border: 1px solid black;
+    padding: 50px;
+    width: 25%;
+    position: fixed;
+    top: 25%;
+    left: 37.5%;
+}
+
+form input {
+    height: 50px;
+    font-size: 30px;
 }
 
 .card-container {
     display: grid;
-    grid-template-columns: minmax(auto-fit, );
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.input-buttons {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space;
+    padding-top: 20px;
 }
