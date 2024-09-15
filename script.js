@@ -50,11 +50,12 @@ addBookButton.addEventListener("click", (event) => {
 });
 
 newEntryButton.addEventListener("click", () => {
-    dialog.show();
+    dialog.showModal();
 });
 
-cancelEntryButton.addEventListener("click", () => {
-    dialog.close
+cancelEntryButton.addEventListener("click", (event) => {
+    dialog.close();
+    event.preventDefault();
 });
 
 //event delegation to check for click events with conditional branching dependent on the class of the button element (in this case, .delete-button or .toggle-read)
@@ -93,19 +94,19 @@ function createCard() {
         cardDiv.setAttribute("id",`${i}`);
         cardDiv.innerHTML = 
                 `<div class="author-name-div card-row">
-                    <div class="author-name-label">Author Name: </div>
+                    <div class="author-name-label card-label">Author Name: </div>
                     <div class="author-name-output">${library[i].author}</div>
                 </div>
                 <div class="book-name-div card-row">
-                    <div class="book-name-label">Book Name: </div>
+                    <div class="book-name-label card-label">Book Name: </div>
                     <div class="book-name-output">${library[i].title}</div>
                 </div>
                 <div class="page-count-div card-row">
-                    <div class="page-count-label">Page Count: </div>
+                    <div class="page-count-label card-label">Page Count: </div>
                     <div class="page-count-output">${library[i].pageCount}</div>
                 </div>
                 <div class="read-status-div card-row">
-                    <div class="read-status-label">Read Status: </div>
+                    <div class="read-status-label card-label">Read Status: </div>
                     <div class="read-status-output">${library[i].readStatus}</div>
                 </div>
                 <button class="delete-button">Delete Entry</button>
