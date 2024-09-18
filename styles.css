@@ -115,3 +115,8 @@ form input {
     justify-content: space;
     padding-top: 20px;
 }
+
+.user-input-field {
+    padding: 0px 5px;
+    border-radius: 7px;
+}
