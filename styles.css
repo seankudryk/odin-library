@@ -57,10 +57,6 @@ form {
     border-radius: 3px;
 }
 
-.card button:active {
-    background-color: rgb(183, 183, 183); 
-}
-
 .card-row {
     display: flex;
     flex-direction: row;
@@ -83,17 +79,19 @@ form {
     background-color: rgb(66, 145, 255);
 }
 
-.new-entry-button:active {
+button:active {
     background-color: rgb(117, 117, 117);
 }
 
 dialog {
-    border: 1px solid black;
+    border: none;
+    border-radius: 10px;
     padding: 50px;
     width: 37.5%;
     position: fixed;
     top: 25%;
     left: 37.5%;
+    box-shadow: 2px 2px 5px gray;
 }
 
 form input {
@@ -108,15 +106,50 @@ form input {
     padding: 0px 20px;
 }
 
+dialog button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    height: 50px;
+    border: none;
+    border-radius: 20px;
+    font-size: 20px;
+    color: white;
+    background-color: rgb(66, 145, 255);
+}
+
+.cancel-entry-button {
+    background-color: white;
+    border: 2px solid rgb(66, 145, 255);
+    color: rgb(66, 145, 255);
+}
+
 .input-buttons {
     display: flex;
     width: 100%;
     flex-direction: row;
-    justify-content: space;
     padding-top: 20px;
+    margin-top: 25px;
 }
 
 .user-input-field {
     padding: 0px 5px;
     border-radius: 7px;
+    border: 1px solid black;
+}
+
+#add-book-button {
+    margin-right: 20px;
+}
+
+label {
+    padding-top: 10px;
+}
+
+select {
+    height: 50px;
+    width: 25%;
+    font-size: 15px;
+    padding-left: 5px;
 }
